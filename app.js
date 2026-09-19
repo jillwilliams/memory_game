@@ -68,13 +68,11 @@ const cardArray = [
 cardArray.sort(() => 0.5 - Math.random())
 
 const gridDisplay = document.getElementById("grid")
-const no = document.getElementById("result")
+const resultDisplay = document.getElementById("result")
 
 
 let cardsChosen = []
-
 let cardsChosenIds = []
-
 const cardsWon = []
 
 function createBoard() {
@@ -96,11 +94,12 @@ function checkMatch() {
     const optionTwoId = cardsChosenIds[1]
 
     if (optionOneId == optionTwoId) {
-
+        cards[optionOneId].setAttribute("src", "images/back2.png")
+        cards[optionTwoId].setAttribute("src", "images/back2.png")
     }
 
 
-    if (cardsChosen[0] === cardsChosen[1]) {
+    if (cardsChosen[0] == cardsChosen[1]) {
         
         cards[optionOneId].setAttribute("src", "images/white.png")
         
@@ -115,12 +114,12 @@ function checkMatch() {
         cards[optionOneId].setAttribute("src", "images/back2.png")
         cards[optionTwoId].setAttribute("src", "images/back2.png")
     }
-
+    resultDisplay.innerHTML = cardsWon.length
     cardsChosen = []
     cardsChosenIds = []
 
     if (cardsWon.length == cardArray.length/2) {
-        
+        resultDisplay.textContent += " Congratulations you found them all!"
     }
 }
 
@@ -131,7 +130,7 @@ function flipCard() {
     cardsChosenIds.push(cardId)
     this.setAttribute("src", cardArray[cardId].img)
     if (cardsChosen.length === 2) {
-        setTimeout(checkMatch, 2000) 
+        setTimeout(checkMatch, 1000) 
     }
 }
 
