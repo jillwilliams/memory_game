@@ -50,8 +50,8 @@ h3 {
 
 @media screen and (max-width: 768px) {
     #grid {
-        width: 500px;
-        height: 500px;
+        width: 400px;
+        height: 400px;
     }
     #grid img {
         width: 85px;
